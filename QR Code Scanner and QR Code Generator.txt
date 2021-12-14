@@ -1,0 +1,57 @@
+// Note: AppointmentBooked component...!
+
+import React, { useState } from 'react';
+import {
+    View,
+    Text,
+    TouchableOpacity
+}
+    from "react-native";
+import QRCodeScanner from 'react-native-qrcode-scanner';
+import QRCode from 'react-native-qrcode-svg';
+
+const Test = () => {
+
+    const [urlState, setUrlState] = useState('');
+
+    const onSuccess = e => {
+        // console.log(e);
+        setUrlState(e.data);
+        // Linking
+        //     .openURL(e.data)
+        //     .catch(err =>
+        //         console.error('An error occured', err)
+        //     );
+    };
+
+    return (
+        <View>
+
+            {/* <QRCodeScanner
+                onRead={onSuccess}
+                // flashMode={RNCamera.Constants.FlashMode.torch}
+                topContent={
+                    <Text>
+                        Go to
+                        <Text> wikipedia.org/wiki/QR_code </Text> on
+                        your computer and scan the QR code.
+                    </Text>
+                }
+                bottomContent={
+                    <TouchableOpacity>
+                        <Text>OK. Got it!</Text>
+                    </TouchableOpacity>
+                }
+            /> */}
+            <Text> QR Code in React Native! </Text>
+            <Text style={{ color: "white" }}> {urlState} </Text>
+
+
+            <QRCode
+                value="08071996"
+            />
+        </View>
+    );
+}
+
+export default Test;
